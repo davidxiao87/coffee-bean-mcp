@@ -1,0 +1,16 @@
+node_modules
+.next
+.git
+.gitignore
+.env
+.env.local
+.env*.local
+*.log
+.DS_Store
+.vscode
+.idea
+README.md
+Dockerfile
+docker-compose.yml
+Caddyfile
+next-env.d.ts
