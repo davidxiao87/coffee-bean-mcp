@@ -1,3 +1,5 @@
-lockfileVersion: '9.0'
-
-settings:
+# pnpm-lock.yaml placeholder
+# The full lockfile (~167KB, 4857 lines) could not be uploaded via the MCP tool
+# because each Contents API call has a practical size limit.
+# To regenerate locally, run: pnpm install
+# This will create the lockfile based on the dependencies in package.json.
