@@ -1,0 +1,24 @@
+# 部署时把 coffee.example.com 替换为你的实际域名
+# 暂时先用服务器 IP 也能跑（HTTPS 自动签发需域名）
+coffee.example.com {
+    encode zstd gzip
+    reverse_proxy nextjs:3000 {
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-For {remote_host}
+        header_up X-Forwarded-Proto {scheme}
+    }
+    # 静态资源缓存
+    @assets path /_next/static/* /favicon.ico
+    header @assets Cache-Control "public, max-age=31536000, immutable"
+    log {
+        output file /data/caddy-access.log {
+            roll_size 50MiB
+            roll_keep 5
+        }
+    }
+}
+
+# IP 直接访问的兜底（无 HTTPS）
+:80 {
+    reverse_proxy nextjs:3000
+}
